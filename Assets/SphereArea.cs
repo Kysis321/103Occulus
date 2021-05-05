@@ -102,9 +102,10 @@ public class SphereArea : MonoBehaviour
                 OVRHapticsClip ovrClip = new OVRHapticsClip(sphereSoundYes);
                 OVRHaptics.RightChannel.Preempt(ovrClip);
                 OVRHaptics.LeftChannel.Preempt(ovrClip);
+                rigidBody.constraints = RigidbodyConstraints.FreezeAll;
             }
         }
-
+        
         // The Detection of objects in the Cone Areaw
         if (other.tag == "torus" && detectorType == DetectorType.Cone)
         {
@@ -128,6 +129,7 @@ public class SphereArea : MonoBehaviour
                 OVRHapticsClip ovrClip = new OVRHapticsClip(coneSoundYes);
                 OVRHaptics.RightChannel.Preempt(ovrClip);
                 OVRHaptics.LeftChannel.Preempt(ovrClip);
+                rigidBody.constraints = RigidbodyConstraints.FreezeAll;
             }
  
         }

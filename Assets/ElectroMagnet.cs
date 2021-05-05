@@ -10,17 +10,27 @@ public class ElectroMagnet : MonoBehaviour
     private Transform electroPosition;
 
     public Collider Button;
+    private bool buttonPressed = false;
     public float t;
     Rigidbody cone, torus, sphere;
 
 
 
     // function needed to check if button has been pressed one or twice.
-    //public bool HasButtoNBeenPressed()
-   // {
-        //if button has had its collider entered once - set true, if pressed again toggle false
-        //run button on and off scripts as appopriate
-    //}
+    public void hasButtoNBeenPressed()
+    {
+        if (buttonPressed == false)
+        {
+            ButtonOff();
+            
+        }
+        if (buttonPressed == true)
+        {
+            ButtonOn();
+            
+        }
+
+    }
     
     
     
@@ -60,5 +70,17 @@ public class ElectroMagnet : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //check if its the player hand
+
+        //swap the value of button pressed
+        buttonPressed = !buttonPressed;
+
+        //call the button press function, which will execute the electromagnet if we've 'pressed' in this trigger call
+        hasButtoNBeenPressed();
+
     }
 }
